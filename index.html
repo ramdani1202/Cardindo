@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Konoha Card Collection</title>
+<meta name="description" content="Trading card battle game — kumpulkan semua kartu dengan menang battle">
+<meta name="theme-color" content="#0f0f14">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Konoha Cards">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-mark">構</span>
+      <div class="brand-text">
+        <h1>Konoha Card</h1>
+        <span>Collection</span>
+      </div>
+    </div>
+    <div class="topbar-stats">
+      <div class="stat-pill">
+        <span class="stat-value" id="statOwned">0</span>
+        <span class="stat-label">/ <span id="statTotal">0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== NAV TABS ===================== -->
+  <nav class="tabbar">
+    <button class="tab-btn active" data-view="battle">
+      <span class="tab-icon">⚔</span>
+      <span>Battle</span>
+    </button>
+    <button class="tab-btn" data-view="collection">
+      <span class="tab-icon">▦</span>
+      <span>Koleksi</span>
+    </button>
+  </nav>
+
+  <!-- ===================== BATTLE VIEW ===================== -->
+  <main id="view-battle" class="view active">
+
+    <section class="battle-intro">
+      <p class="battle-hint">Menangkan battle untuk membuka kartu baru</p>
+    </section>
+
+    <section class="arena">
+      <div class="fighter fighter-player">
+        <span class="fighter-label">Kartumu</span>
+        <div class="card-slot" id="playerCardSlot">
+          <div class="card-empty">Pilih kartu</div>
+        </div>
+      </div>
+
+      <div class="vs-badge">VS</div>
+
+      <div class="fighter fighter-enemy">
+        <span class="fighter-label">Lawan</span>
+        <div class="card-slot" id="enemyCardSlot">
+          <div class="card-empty">?</div>
+        </div>
+      </div>
+    </section>
+
+    <button class="btn-primary btn-battle" id="btnBattle" disabled>
+      Pilih kartu dulu
+    </button>
+
+    <section class="deck-picker">
+      <div class="deck-picker-head">
+        <span>Pilih kartu untuk battle</span>
+      </div>
+      <div class="deck-scroll" id="deckScroll">
+        <!-- filled by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== COLLECTION VIEW ===================== -->
+  <main id="view-collection" class="view">
+    <section class="collection-head">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-text" id="progressText">0 dari 0 kartu terkumpul</span>
+    </section>
+
+    <div class="filter-row" id="filterRow">
+      <button class="filter-chip active" data-filter="all">Semua</button>
+      <button class="filter-chip" data-filter="common">Common</button>
+      <button class="filter-chip" data-filter="rare">Rare</button>
+      <button class="filter-chip" data-filter="epic">Epic</button>
+      <button class="filter-chip" data-filter="legendary">Legendary</button>
+    </div>
+
+    <div class="card-grid" id="cardGrid">
+      <!-- filled by JS -->
+    </div>
+  </main>
+
+</div>
+
+<!-- ===================== BATTLE RESULT MODAL ===================== -->
+<div class="modal-overlay" id="battleModal">
+  <div class="modal-box" id="battleModalBox">
+    <div class="modal-icon" id="modalIcon">🏆</div>
+    <h2 id="modalTitle">Menang!</h2>
+    <p id="modalSubtitle">Kamu membuka kartu baru</p>
+
+    <div class="reward-card-wrap" id="rewardCardWrap">
+      <!-- filled by JS when win -->
+    </div>
+
+    <button class="btn-primary" id="modalCloseBtn">Lanjut</button>
+  </div>
+</div>
+
+<!-- ===================== UPDATE TOAST ===================== -->
+<div class="update-toast" id="updateToast">
+  <span>Versi baru tersedia</span>
+  <button id="updateToastBtn">Perbarui</button>
+</div>
+
+<script src="cards-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
