@@ -31,6 +31,7 @@ const CARD_DATABASE = [
     rarity: "common",
     power: 42,
     faction: "Birokrasi",
+    color: "#5B8DEF", // warna solid background kartu ini
     image: "" // <-- tempel link raw GitHub di sini
   },
   {
@@ -40,6 +41,7 @@ const CARD_DATABASE = [
     rarity: "rare",
     power: 58,
     faction: "Konglomerat",
+    color: "#2D9CDB",
     image: ""
   },
   {
@@ -49,6 +51,7 @@ const CARD_DATABASE = [
     rarity: "epic",
     power: 71,
     faction: "Birokrasi",
+    color: "#6C5DD3",
     image: ""
   },
   {
@@ -58,6 +61,7 @@ const CARD_DATABASE = [
     rarity: "rare",
     power: 55,
     faction: "Jalanan",
+    color: "#EB5757",
     image: ""
   },
   {
@@ -67,6 +71,7 @@ const CARD_DATABASE = [
     rarity: "epic",
     power: 68,
     faction: "Konglomerat",
+    color: "#219653",
     image: ""
   },
   {
@@ -76,6 +81,7 @@ const CARD_DATABASE = [
     rarity: "common",
     power: 38,
     faction: "Birokrasi",
+    color: "#F2994A",
     image: ""
   },
   {
@@ -85,6 +91,7 @@ const CARD_DATABASE = [
     rarity: "legendary",
     power: 88,
     faction: "Konglomerat",
+    color: "#1E1B2E",
     image: ""
   },
   {
@@ -94,6 +101,7 @@ const CARD_DATABASE = [
     rarity: "common",
     power: 40,
     faction: "Birokrasi",
+    color: "#56CCF2",
     image: ""
   },
   {
@@ -103,6 +111,7 @@ const CARD_DATABASE = [
     rarity: "rare",
     power: 52,
     faction: "Jalanan",
+    color: "#BB6BD9",
     image: ""
   },
   {
@@ -112,6 +121,7 @@ const CARD_DATABASE = [
     rarity: "epic",
     power: 74,
     faction: "Konglomerat",
+    color: "#EB5757",
     image: ""
   },
   {
@@ -121,6 +131,7 @@ const CARD_DATABASE = [
     rarity: "common",
     power: 36,
     faction: "Birokrasi",
+    color: "#F2C94C",
     image: ""
   },
   {
@@ -130,6 +141,7 @@ const CARD_DATABASE = [
     rarity: "legendary",
     power: 90,
     faction: "Konglomerat",
+    color: "#4B3FA8",
     image: ""
   }
 ];

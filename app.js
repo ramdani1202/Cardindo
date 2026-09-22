@@ -37,17 +37,19 @@ function getCard(id) {
   return CARD_DATABASE.find(c => c.id === id);
 }
 
-function placeholderGradient(card) {
-  // Warna deterministik dari id supaya konsisten tiap render
-  const colors = RARITY_COLORS[card.rarity] || RARITY_COLORS.common;
-  return `linear-gradient(150deg, ${colors.bg}, ${colors.glow})`;
+function cardBackgroundColor(card) {
+  return card.color || (RARITY_COLORS[card.rarity] || RARITY_COLORS.common).bg;
 }
 
 function cardVisualStyle(card) {
+  return `background-color: ${cardBackgroundColor(card)};`;
+}
+
+function cardIllustrationHTML(card) {
   if (card.image && card.image.trim() !== "") {
-    return `background-image: url('${card.image}'); background-size: cover; background-position: center;`;
+    return `<img class="full-card-photo" src="${card.image}" alt="${card.name}">`;
   }
-  return `background: ${placeholderGradient(card)};`;
+  return generateCardSVG(card);
 }
 
 // ---------------- RENDER: TOP STATS ----------------
@@ -68,6 +70,7 @@ function renderDeckPicker() {
     el.className = "mini-card" + (card.id === selectedCardId ? " selected" : "");
     el.style.cssText = cardVisualStyle(card);
     el.innerHTML = `
+      <div class="mini-card-illustration">${cardIllustrationHTML(card)}</div>
       <div class="mini-card-name">${card.name}</div>
       <div class="mini-card-power">PWR ${card.power}</div>
     `;
@@ -94,9 +97,10 @@ function renderFullCard(card) {
   return `
     <div class="full-card" style="${cardVisualStyle(card)}">
       <div class="full-card-top">
-        <span class="full-card-rarity" style="background:${colors.bg}">${colors.label}</span>
+        <span class="full-card-rarity" style="color:${colors.bg}">${colors.label}</span>
         <span class="full-card-power">${card.power}</span>
       </div>
+      <div class="full-card-illustration">${cardIllustrationHTML(card)}</div>
       <div class="full-card-bottom">
         <div class="full-card-name">${card.name}</div>
         <div class="full-card-tagline">${card.tagline}</div>
@@ -214,8 +218,9 @@ function renderCollectionGrid() {
     const owned = isOwned(card.id);
     const el = document.createElement("div");
     el.className = "mini-card" + (owned ? "" : " mini-card-locked");
-    el.style.cssText = owned ? cardVisualStyle(card) : `background: ${placeholderGradient(card)};`;
+    el.style.cssText = cardVisualStyle(card);
     el.innerHTML = `
+      <div class="mini-card-illustration">${owned ? cardIllustrationHTML(card) : ""}</div>
       <div class="mini-card-name">${owned ? card.name : "???"}</div>
       <div class="mini-card-power">${owned ? "PWR " + card.power : RARITY_COLORS[card.rarity].label}</div>
     `;

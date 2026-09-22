@@ -29,6 +29,7 @@ const APP_SHELL = [
   "./style.css",
   "./app.js",
   "./cards-data.js",
+  "./card-illustrations.js",
   "./manifest.json"
 ];
 

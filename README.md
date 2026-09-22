@@ -8,6 +8,7 @@ konoha-card-game/
 ├── style.css          → semua tampilan/desain
 ├── app.js              → logic game (battle, koleksi, dsb)
 ├── cards-data.js  → ⭐ FILE YANG KAMU EDIT untuk nambah/ubah kartu
+├── card-illustrations.js → generator ilustrasi SVG otomatis per kartu
 ├── manifest.json → info PWA (nama, ikon, warna)
 ├── sw.js                  → service worker (offline + auto-update)
 └── icons/               → ikon app (placeholder, ganti nanti)
